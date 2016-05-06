@@ -1,4 +1,6 @@
-# My Trilinos tutorials
+# Trilinos for Dummies
+
+## Rationale and aims
 
 When I saw [Trilinos](https://trilinos.org/) I thought it looks like a powerful
 collection of packages for science, but I found the original examples quite
@@ -19,3 +21,11 @@ Serial:
 
 Parallel:
  - Constructing and operating on matrices
+
+
+## Tutorials
+
+### 01-Hello World
+
+Tpetra says hello and informs about the version. This is a very minmial example
+on how to build against a Trilinos with CMake.
