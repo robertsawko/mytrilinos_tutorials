@@ -12,6 +12,6 @@ main (int argc, char *argv[])
   using std::cout;
   using std::endl;
 
-  cout << Tpetra::version () << std::endl << endl;
+  cout << "Hi from " << Tpetra::version () << std::endl << endl;
   return 0;
 }

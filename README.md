@@ -25,7 +25,12 @@ Parallel:
 
 ## Tutorials
 
-### 01-Hello World
+### Hello World
 
 Tpetra says hello and informs about the version. This is a very minmial example
 on how to build against a Trilinos with CMake.
+
+### Norms etc (serial)
+
+A tutorial which looks at creating vectors, matrices and running some
+operations on them. Communicators are introduced.
