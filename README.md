@@ -30,6 +30,11 @@ Parallel:
 Tpetra says hello and informs about the version. This is a very minmial example
 on how to build against a Trilinos with CMake.
 
+### Enter Teuchos
+
+Teuchos is a package full of useful tools and programming constructs. We
+present reference counting pointers (RCP) and automatic command-line parsing.
+
 ### Norms etc (serial)
 
 A tutorial which looks at creating vectors, matrices and running some

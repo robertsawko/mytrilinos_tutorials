@@ -19,4 +19,10 @@ add_executable(
   ref_count.cpp 
 )
 
+add_executable(
+  clp
+  clp.cpp 
+)
+
 target_link_libraries(ref_count ${Trilinos_LIBRARIES})
+target_link_libraries(clp ${Trilinos_LIBRARIES})
