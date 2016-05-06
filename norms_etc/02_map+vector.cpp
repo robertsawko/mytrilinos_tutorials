@@ -20,7 +20,7 @@ main (int argc, char *argv[])
   RCP<const map_type> contigMap =
       rcp (new map_type (2, indexBase, comm));
   vector_type x (contigMap);
-  x.putScalar (1.0);
+  x.putScalar(1.0);
   std::cout<< "Norm of x (all entries are 1.0): "
       << x.norm2 () << std::endl;
 
