@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 2.7)
 
+set( # This allows the user to specify where Trilinos lives. 
+  Trilinos_DIR
+  "/usr/local/lib/cmake/Trilinos" # Note lib/cmake/Trilinos suffix
+  CACHE PATH "Provide path to Trilinos cmake files") 
+
 FIND_PACKAGE(Trilinos REQUIRED 
-  PATHS /home/robert/trilinos12.6/usr/local/lib/cmake/Trilinos
+  PATHS ${Trilinos_DIR}
   COMPONENTS Tpetra) # Note: COMPONENTS option will construct a minimal(?) list
                      # of necessary packages to link a specific package.
 
