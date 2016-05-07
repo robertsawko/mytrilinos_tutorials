@@ -14,15 +14,7 @@ link_directories(${Trilinos_LIBRARY_DIRS})
 
 add_definitions(-std=c++11)
 
-add_executable(
-  01_init
-  01_init.cpp 
-)
-
-add_executable(
-  02_map+vector
-  02_map+vector.cpp 
-)
-
-target_link_libraries(01_init ${Trilinos_LIBRARIES})
-target_link_libraries(02_map+vector ${Trilinos_LIBRARIES})
+foreach(exe_name IN ITEMS 01_init 02_map+vector 03_sparse)
+  add_executable(${exe_name} ${exe_name}.cpp)
+  target_link_libraries(${exe_name} ${Trilinos_LIBRARIES})
+endforeach(exe_name)

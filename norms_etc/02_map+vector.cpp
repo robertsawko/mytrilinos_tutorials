@@ -2,27 +2,31 @@
 #include <Tpetra_Vector.hpp>
 #include <Teuchos_RCP.hpp>
 
-int
-main (int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   using Teuchos::RCP;
   using Teuchos::rcp;
   using Teuchos::Comm;
   using Teuchos::SerialComm;
   RCP<const Comm<int>> comm = rcp(new SerialComm<int>());
 
-  // What is this lot?
-  typedef Tpetra::Vector<> vector_type;
-  typedef Tpetra::Vector<>::global_ordinal_type global_ordinal_type;
-  typedef Tpetra::Map<> map_type;
+  typedef Tpetra::Map<> map_type; // using empty angle brackets forces
+                                  // type deduction
 
-  const global_ordinal_type indexBase = 0;
   RCP<const map_type> contigMap =
-      rcp (new map_type (2, indexBase, comm));
-  vector_type x (contigMap);
-  x.putScalar(1.0);
-  std::cout<< "Norm of x (all entries are 1.0): "
-      << x.norm2 () << std::endl;
+      rcp(new map_type(2, // no of elements
+                       0, // index base (smallest element in the global index
+                       comm));
+  Tpetra::Vector<> x(contigMap);
+  x.replaceGlobalValue(0, 3.0);
+  x.replaceGlobalValue(1, 4.0);
+  std::cout << "Norm of x: " << x.norm2() << std::endl;
 
+  // I haven't found a better way to output the components. This uses Teuchos
+  // FancyOstream object.
+  std::ostream &out(std::cout);
+  RCP<Teuchos::FancyOStream> fos =
+      Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
+  x.describe(*fos, Teuchos::VERB_EXTREME);
+  *fos << std::endl;
   return 0;
 }
